@@ -1,5 +1,11 @@
 import bookData from './bookstore.json'
 
+type Customer = {
+    name:string
+    address:string
+}
+
+
 const Book = (book: typeof bookData[number]) => {
     return `
     <li>${book.title}</li>
@@ -30,6 +36,10 @@ document.getElementById('search-input')?.addEventListener('change', (event) => {
 
 document.getElementById('search-form')?.addEventListener('submit', (event) => {
     event.preventDefault()
+})
+
+document.getElementById('results')?.addEventListener('click', (event) => {
+    (event.target as HTMLLIElement).classList.toggle('selected')
 })
 
 render(bookData)
